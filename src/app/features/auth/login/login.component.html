@@ -1,0 +1,30 @@
+<section class="w-[85%] md:w-[60%] mx-auto my-20 bg-slate-100 p-5 md:p-10 shadow-sm rounded-2xl">
+  <h1 class="mb-3 text-2xl font-semibold">Login Form</h1>
+  <form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+  <div class="relative my-3">
+    <input formControlName="email" type="text" id="email" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer" placeholder=" " />
+    <label for="email" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1 bg-slate-100">Email</label>
+  </div>
+  @if (this.loginForm.get('email')?.touched && this.loginForm.get('email')?.errors) {
+    <div class="p-2 text-xs text-red-800 bg-red-100 border border-red-700 rounded-lg">
+      <p *ngIf="this.loginForm.get('email')?.errors?.['required']">Field Email is required</p>
+      <p *ngIf="this.loginForm.get('email')?.errors?.['email']">This is not a valid email address</p>
+    </div>
+  }
+  <div class="relative my-3">
+    <input formControlName="password" type="password" id="password" class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:border-gray-600 dark:focus:border-green-500 focus:outline-none focus:ring-0 focus:border-green-600 peer" placeholder=" " />
+    <label for="password" class="absolute text-sm text-gray-500 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] px-2 peer-focus:px-2 peer-focus:text-green-600 peer-focus:dark:text-green-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 rtl:peer-focus:translate-x-1/4 rtl:peer-focus:left-auto start-1 bg-slate-100">Password</label>
+  </div>
+  @if (this.loginForm.get('password')?.touched && this.loginForm.get('password')?.errors) {
+    <div class="p-2 text-xs text-red-800 bg-red-100 border border-red-700 rounded-lg">
+      <p *ngIf="this.loginForm.get('password')?.errors?.['required']">Field Password is required</p>
+    </div>
+  }
+  <p class="m-2 font-semibold text-center text-red-600">{{errorMessage}}</p>
+  <button [disabled]="loginForm.invalid" [ngClass]="{'bg-green-800': loginForm.invalid}" type="submit" class="text-white bg-green-700 hover:bg-green-800 focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-green-600 dark:hover:bg-green-700 dark:focus:ring-green-800">
+    @if (isLoading) {
+      <i class="fa fa-spinner fa-spin"></i>
+    }
+    Login</button>
+  </form>
+</section>
