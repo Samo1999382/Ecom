@@ -6,13 +6,14 @@ import { JwtPayload } from '../../../../../node_modules/jwt-decode/build/cjs/ind
 import { Auth } from '../../../shared/interface/auth';
 import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
+import { baseURL } from '../../constant/baseURL';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
   userToken: BehaviorSubject<null | JwtPayload> = new BehaviorSubject<null | JwtPayload>(null);
-  baseURL = 'https://ecommerce.routemisr.com/api/v1/auth/'
+  // baseURL = 'https://ecommerce.routemisr.com/api/v1/auth/'
 
   constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object, private router: Router) {
     if(isPlatformBrowser(platformId))
@@ -24,11 +25,11 @@ export class AuthService {
   }
 
   register(data: Auth): Observable<any> {
-    return this.http.post(this.baseURL+'signup', data)
+    return this.http.post(`${baseURL.BaseURL}/auth/signup`, data)
   }
 
   login(data: Auth): Observable<any> {
-    return this.http.post(this.baseURL+'signin', data)
+    return this.http.post(`${baseURL.BaseURL}/auth/signin`, data)
   }
 
   decodeUserData() {

@@ -1,26 +1,33 @@
-<div class="w-[70%] mx-auto">
-  <input [(ngModel)]="searchValue" type="text" name="" id="" class="w-full my-4 border rounded-md" placeholder="Enter product's name">
-</div>
-<div class="flex flex-wrap">
-  @for (product of productList | filter: searchValue ; track $index) {
-    <div [routerLink]="['/productDetails', product._id]" class="w-1/2 p-1 md:p-3 md:w-1/4 lg:w-1/5 xl:w-1/6">
-      <div class="h-full p-3 rounded bg-slate-100">
-        <img [src]="product.imageCover" alt="" class="w-full md:h-[200px]">
-        <span class="text-xs font-medium text-green-400">{{product.category.name}}</span>
-        <p class="my-3 font-light">{{product.title.split(' ').splice(0, 3).join(' ')}}</p>
-        <div class="icon">
-          <div class="flex items-start justify-between">
-            <div>
-              <i class="text-yellow-300 fa fa-star"></i>
-              <span>{{product.ratingsQuantity}}</span>
-              <span class="text-slate-500">({{product.quantity}})</span>
+<section class="md:w-[90%] mb-5 mx-2 md:mx-auto">
+  <div class="w-[70%] mx-auto">
+    <input [(ngModel)]="searchValue" type="text" name="" id="" class="w-full my-4 border rounded-md" placeholder="Enter product's name">
+  </div>
+  <div class="flex flex-wrap">
+    @for (product of productList | filter: searchValue ; track $index) {
+      <div class="w-1/2 p-1 md:p-3 md:w-1/4 lg:w-1/5 xl:w-1/6">
+        <div class="h-full p-3 rounded bg-slate-100">
+          <div  [routerLink]="['/productDetails', product._id]">
+            <img [src]="product.imageCover" [alt]="product.category.name" class="w-full md:h-[200px] object-contain">
+            <span class="text-xs font-medium text-green-400">{{product.category.name}}</span>
+            <p class="my-3 font-light">{{product.title.split(' ').splice(0, 3).join(' ')}}</p>
+            <div class="icon">
+              <div class="flex items-start justify-between">
+                <div>
+                  <i class="text-yellow-300 fa fa-star"></i>
+                  <span>{{product.ratingsAverage}}</span>
+                  <span class="text-slate-500">({{product.quantity}})</span>
+                </div>
+                <div>
+                  <span>{{ product.price | currency: 'EUR':'symbol':'1.0-2' }}</span>
+                </div>
+              </div>
             </div>
-            <div>
-              <span>{{product.price | currency: 'EUR' }}</span>
-            </div>
+          </div>
+          <div class="text-center">
+            <button (click)="addProduct(product._id)" class="p-2 text-white bg-green-600 rounded w-[90%]  m-2">Add to cart</button>
           </div>
         </div>
       </div>
-    </div>
-  }
-</div>
+    }
+  </div>
+</section>

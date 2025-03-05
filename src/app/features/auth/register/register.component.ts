@@ -31,8 +31,6 @@ export class RegisterComponent {
   constructor(private authService:AuthService, private router:Router) {}
 
   submitForm() {
-    console.log(this.registerForm.get('name')?.touched)
-    console.log(this.registerForm.get('name')?.errors)
     this.isLoading = true;
     this.authService.register(this.registerForm.value).subscribe({
       next:(res) => {

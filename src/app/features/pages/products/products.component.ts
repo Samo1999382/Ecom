@@ -5,6 +5,8 @@ import { CurrencyPipe } from '@angular/common';
 import { FilterPipe } from '../../../shared/pipe/filter.pipe';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
+import { CartService } from '../../../core/services/cart/cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-products',
@@ -13,7 +15,7 @@ import { RouterLink } from '@angular/router';
   styleUrl: './products.component.scss'
 })
 export class ProductsComponent implements OnInit {
-  constructor(private productsService: ProductsService) { }
+  constructor(private productsService: ProductsService, private cart:CartService, private toastr: ToastrService) { }
 
   productList: products[] = [];
   searchValue:string = '';
@@ -26,6 +28,14 @@ export class ProductsComponent implements OnInit {
     this.productsService.getProducts().subscribe( {
       next: res =>{
         this.productList = res.data;
+      }
+    });
+  }
+
+  addProduct(productID: string) {
+    this.cart.addProductToCart(productID).subscribe({
+      next: res => {
+        this.toastr.success(res.message, 'Success', {closeButton: true, progressBar: true, timeOut: 2000});
       }
     });
   }
