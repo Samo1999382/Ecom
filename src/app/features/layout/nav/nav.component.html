@@ -4,33 +4,33 @@
     <a href="#" class="flex items-center space-x-3 rtl:space-x-reverse">
         <img src="assets/freshcart-logo.svg" class="h-8" alt="Flowbite Logo" />
     </a>
-    <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 " aria-controls="navbar-default" aria-expanded="false">
+    <button data-collapse-toggle="navbar-default" type="button" class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-500 rounded-lg lg:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 " aria-controls="navbar-default" aria-expanded="false">
         <span class="sr-only">Open main menu</span>
         <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
         </svg>
     </button>
-    <div class="z-50 items-center justify-between flex-grow hidden w-full md:flex md:w-auto rounded-b-3xl" id="navbar-default">
-        <ul class="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-3xl md:ms-10 md:p-0 md:flex-row md:space-x-4 rtl:space-x-reverse md:mt-0 md:border-0">
+    <div class="z-50 items-center justify-between flex-grow hidden w-full lg:flex lg:w-auto rounded-b-3xl" id="navbar-default">
+        <ul class="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-3xl lg:ms-10 lg:p-0 lg:flex-row lg:space-x-4 rtl:space-x-reverse lg:mt-0 lg:border-0">
           <li>
-            <a routerLink="/home" routerLinkActive="bg-green-400 rounded-3xl text-white hover:bg-green-400 md:hover:bg-green-400 md:border-0 md:hover:text-white hover:bg-green-400 md:hover:bg-green-400 md:border-0 md:hover:text-white" class="block px-3 py-2 text-gray-900 rounded-sm hover:bg-green-400 md:hover:bg-transparent md:border-0 md:hover:text-green-700 ">Home</a>
+            <a routerLink="/home" routerLinkActive="bg-green-400 rounded-3xl text-white hover:bg-green-400 lg:hover:bg-green-400 lg:border-0 lg:hover:text-white hover:bg-green-400 lg:hover:bg-green-400 lg:border-0 lg:hover:text-white" class="block px-3 py-2 text-gray-900 hover:bg-green-400 lg:border-0 lg:hover:text-green-700 ">Home</a>
           </li>
           <li>
-            <a routerLink="/products" routerLinkActive="bg-green-400 rounded-3xl text-white hover:bg-green-400 md:hover:bg-green-400 md:border-0 md:hover:text-white" class="block px-3 py-2 text-gray-900 rounded-sm hover:bg-green-400 md:hover:bg-transparent md:border-0 md:hover:text-green-700 ">Products</a>
+            <a routerLink="/products" routerLinkActive="bg-green-400 rounded-3xl text-white hover:bg-green-400 lg:hover:bg-green-400 lg:border-0 lg:hover:text-white" class="block px-3 py-2 text-gray-900 hover:bg-green-400 lg:border-0 lg:hover:text-green-700 ">Products</a>
           </li>
           @if (isLogin) {
           <li>
-            <a routerLink="/cart" routerLinkActive="bg-green-400 rounded-3xl text-white hover:bg-green-400 md:hover:bg-green-400 md:border-0 md:hover:text-white" class="block px-3 py-2 text-gray-900 rounded-sm hover:bg-green-400 md:hover:bg-transparent md:border-0 md:hover:text-green-700 ">Cart</a>
+            <a routerLink="/cart" routerLinkActive="bg-green-400 rounded-3xl text-white hover:bg-green-400 lg:hover:bg-green-400 lg:border-0 lg:hover:text-white" class="block px-3 py-2 text-gray-900 hover:bg-green-400 lg:border-0 lg:hover:text-green-700 ">Cart</a>
           </li>
         }
           <li>
-            <a routerLink="/brands" routerLinkActive="bg-green-400 rounded-3xl text-white hover:bg-green-400 md:hover:bg-green-400 md:border-0 md:hover:text-white" class="block px-3 py-2 text-gray-900 rounded-sm hover:bg-green-400 md:hover:bg-transparent md:border-0 md:hover:text-green-700 ">Brands</a>
+            <a routerLink="/brands" routerLinkActive="bg-green-400 rounded-3xl text-white hover:bg-green-400 lg:hover:bg-green-400 lg:border-0 lg:hover:text-white" class="block px-3 py-2 text-gray-900 hover:bg-green-400 lg:border-0 lg:hover:text-green-700 ">Brands</a>
           </li>
           <li>
-            <a routerLink="/categories" routerLinkActive="bg-green-400 rounded-3xl text-white hover:bg-green-400 md:hover:bg-green-400 md:border-0 md:hover:text-white" class="block px-3 py-2 text-gray-900 rounded-sm hover:bg-green-400 md:hover:bg-transparent md:border-0 md:hover:text-green-700 ">Categories</a>
+            <a routerLink="/categories" routerLinkActive="bg-green-400 rounded-3xl text-white hover:bg-green-400 lg:hover:bg-green-400 lg:border-0 lg:hover:text-white" class="block px-3 py-2 text-gray-900 hover:bg-green-400 lg:border-0 lg:hover:text-green-700 ">Categories</a>
           </li>
         </ul>
-      <ul class="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-3xl ms-auto md:p-0 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0">
+      <ul class="flex flex-col p-4 mt-4 font-medium border border-gray-100 rounded-3xl ms-auto lg:p-0 lg:flex-row lg:space-x-8 rtl:space-x-reverse lg:mt-0 lg:border-0">
         @if (isLogin) {
           <li class="flex items-center space-x-2">
             <i class="fa-brands fa-facebook"></i>
@@ -39,14 +39,14 @@
             <i class="fa-brands fa-linkedin"></i>
           </li>
           <li>
-            <a role="button" (click)="_AuthService.logOut()" class="block px-3 py-2 text-gray-900 rounded-sm md:hover:bg-transparent md:border-0 md:hover:text-green-700 ">Logout</a>
+            <a role="button" (click)="_AuthService.logOut()" class="block px-3 py-2 text-gray-900 lg:border-0 lg:hover:text-green-700 ">Logout</a>
           </li>
         }@else {
           <li>
-            <a routerLink="/login" routerLinkActive="bg-green-400 rounded-3xl text-white hover:bg-green-400 md:hover:bg-green-400 md:border-0 md:hover:text-white" class="block px-3 py-2 text-gray-900 rounded-sm hover:bg-green-400 md:hover:bg-transparent md:border-0 md:hover:text-green-700 ">Login</a>
+            <a routerLink="/login" routerLinkActive="bg-green-400 rounded-3xl text-white hover:bg-green-400 lg:hover:bg-green-400 lg:border-0 lg:hover:text-white" class="block px-3 py-2 text-gray-900 hover:bg-green-400 lg:border-0 lg:hover:text-green-700 ">Login</a>
           </li>
           <li>
-            <a routerLink="/register" routerLinkActive="bg-green-400 rounded-3xl text-white hover:bg-green-400 md:hover:bg-green-400 md:border-0 md:hover:text-white" class="block px-3 py-2 text-gray-900 rounded-sm hover:bg-green-400 md:hover:bg-transparent md:border-0 md:hover:text-green-700 ">Register</a>
+            <a routerLink="/register" routerLinkActive="bg-green-400 rounded-3xl text-white hover:bg-green-400 lg:hover:bg-green-400 lg:border-0 lg:hover:text-white" class="block px-3 py-2 text-gray-900 hover:bg-green-400 lg:border-0 lg:hover:text-green-700 ">Register</a>
           </li>
         }
       </ul>
