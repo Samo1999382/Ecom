@@ -11,6 +11,8 @@ import { CategoriesComponent } from './features/pages/categories/categories.comp
 import { authGuard } from './core/guard/auth/auth.guard';
 import { checkTokenGuard } from './core/guard/checkToken/check-token.guard';
 import { ProductDetailsComponent } from './features/pages/product-details/product-details.component';
+import { AllOrdersComponent } from './features/pages/all-orders/all-orders.component';
+import { WishListComponent } from './features/pages/wish-list/wish-list.component';
 
 export const routes: Routes = [
   {path: '', component: AuthLayoutComponent, canActivate: [checkTokenGuard], children: [
@@ -22,6 +24,8 @@ export const routes: Routes = [
     {path: 'productDetails/:id', component: ProductDetailsComponent, title: 'Product Details'},
     {path: 'home', component: HomeComponent, title: 'Home'},
     {path: 'cart', canActivate: [authGuard], component: CartComponent, title: 'Cart'},
+    {path: 'wishlist', canActivate: [authGuard], component: WishListComponent, title: 'Wish List'},
+    {path: 'allorders', canActivate: [authGuard], component: AllOrdersComponent, title: 'All Orders'},
     {path: 'products', component: ProductsComponent, title: 'Products'},
     {path: 'brands', component: BrandsComponent, title: 'Brands'},
     {path: 'categories', component: CategoriesComponent, title: 'Categories'},

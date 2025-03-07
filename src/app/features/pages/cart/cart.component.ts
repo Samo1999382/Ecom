@@ -12,10 +12,27 @@ import { CurrencyPipe } from '@angular/common';
 export class CartComponent {
   totalPrice: number = 0;
   products: Cart[] = [];
+  temp: Cart[] = [];
+  isLoading:boolean = true;
 
   constructor(private cart: CartService) {
-    this.getCart();
-    this.isModalOpen = false;
+    this.products = this.cart.products;
+    this.totalPrice = this.cart.totalPrice;
+    if(this.products.length !== 0){
+      this.isLoading = false;
+    }
+    this.cart.getProductFromCart().subscribe({
+      next: res => {
+        this.temp = res.data.products;
+      },
+      complete: ()=>{
+        this.isLoading = false;
+      }
+    });
+    if(this.products.length === 0 || this.temp !== this.cart.products){
+      this.getCart();
+      this.isModalOpen = false;
+    }
   }
 
   getCart(){
@@ -23,6 +40,8 @@ export class CartComponent {
       next: res => {
         this.totalPrice = res.data.totalCartPrice;
         this.products = res.data.products;
+        this.cart.products = res.data.products;
+        this.cart.totalPrice = res.data.totalCartPrice;
       }
     });
   }
@@ -32,6 +51,8 @@ export class CartComponent {
       next: res => {
         this.totalPrice = res.data.totalCartPrice;
         this.products = res.data.products;
+        this.cart.products = res.data.products;
+        this.cart.totalPrice = res.data.totalCartPrice;
       }
     });
   }
@@ -41,6 +62,8 @@ export class CartComponent {
       next: res => {
         this.totalPrice = res.data.totalCartPrice;
         this.products = res.data.products;
+        this.cart.products = res.data.products;
+        this.cart.totalPrice = res.data.totalCartPrice;
       }
     });
   }
@@ -51,6 +74,8 @@ export class CartComponent {
         this.totalPrice = 0;
         this.products = [];
         this.isModalOpen = false;
+        this.cart.products = this.products;
+        this.cart.totalPrice = this.totalPrice;
       }
     });
   }

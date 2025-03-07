@@ -13,7 +13,7 @@ import { baseURL } from '../../constant/baseURL';
 })
 export class AuthService {
   userToken: BehaviorSubject<null | JwtPayload> = new BehaviorSubject<null | JwtPayload>(null);
-  // baseURL = 'https://ecommerce.routemisr.com/api/v1/auth/'
+  userId!: any;
 
   constructor(private http: HttpClient, @Inject(PLATFORM_ID) private platformId: Object, private router: Router) {
     if(isPlatformBrowser(platformId))
@@ -35,7 +35,9 @@ export class AuthService {
   decodeUserData() {
     const token = localStorage.getItem('userToken')||'';
     const decoded = jwtDecode(token);
+    this.userId = decoded
     this.userToken.next(decoded);
+    this.userId = this.userId.id
     return null;
   }
 

@@ -1,33 +1,66 @@
+
 <section class="md:w-[90%] mb-5 mx-2 md:mx-auto">
   <div class="w-[70%] mx-auto">
     <input [(ngModel)]="searchValue" type="text" name="" id="" class="w-full my-4 border rounded-md" placeholder="Enter product's name">
   </div>
   <div class="flex flex-wrap">
-    @for (product of productList | filter: searchValue ; track $index) {
-      <div class="w-1/2 p-1 md:p-3 md:w-1/4 lg:w-1/5 xl:w-1/6">
-        <div class="h-full p-3 rounded bg-slate-100">
-          <div  [routerLink]="['/productDetails', product._id]">
-            <img [src]="product.imageCover" [alt]="product.category.name" class="w-full md:h-[200px] object-contain">
-            <span class="text-xs font-medium text-green-400">{{product.category.name}}</span>
-            <p class="my-3 font-light">{{product.title.split(' ').splice(0, 3).join(' ')}}</p>
-            <div class="icon">
-              <div class="flex items-start justify-between">
+    @defer (when !this.isLoading) {
+      @for (product of productList | filter: searchValue ; track $index) {
+        <div class="w-1/2 p-1 md:p-3 md:w-1/4 lg:w-1/5 xl:w-1/6">
+          <div class="h-full p-3 rounded bg-slate-100">
+            <div class="relative">
+              @if(wishList.includes(product._id)){
+                <i (click)="removeFromWishList(product._id)" class="absolute top-[165px] right-0 z-10 fa-solid fa-heart text-2xl"></i>
+              }@else {
+                <i (click)="addToWishList(product._id)" class="absolute top-[165px] bottom-0 right-0 z-10 fa-regular fa-heart text-2xl"></i>
+              }
+            </div>
+              <div  [routerLink]="['/productDetails', product._id]">
                 <div>
-                  <i class="text-yellow-300 fa fa-star"></i>
-                  <span>{{product.ratingsAverage}}</span>
-                  <span class="text-slate-500">({{product.quantity}})</span>
+                  <img [src]="product.imageCover" [alt]="product.category.name" class="w-full md:h-[200px] object-contain">
                 </div>
-                <div>
-                  <span>{{ product.price | currency: 'EUR':'symbol':'1.0-2' }}</span>
+                <span class="text-xs font-medium text-green-400">{{product.category.name}}</span>
+                <p class="my-3 font-light">{{product.title.split(' ').splice(0, 3).join(' ')}}</p>
+                <div class="icon">
+                  <div class="flex items-start justify-between">
+                    <div>
+                      <i class="text-yellow-300 fa fa-star"></i>
+                      <span>{{product.ratingsAverage}}</span>
+                      <span class="text-slate-500">({{product.quantity}})</span>
+                    </div>
+                    <div>
+                      <span>{{ product.price | currency: 'GBP':'symbol':'1.0-2' }}</span>
+                    </div>
+                  </div>
                 </div>
               </div>
-            </div>
-          </div>
-          <div class="text-center">
-            <button (click)="addProduct(product._id)" class="p-2 text-white bg-green-600 rounded w-[90%]  m-2">Add to cart</button>
+              <div class="text-center">
+                <button (click)="addProduct(product._id)" class="p-2 text-white bg-green-600 rounded w-[90%]  m-2">Add to cart</button>
+              </div>
           </div>
         </div>
-      </div>
+      }
+    }@placeholder {
+      @for (i of [].constructor(15); track $index) {
+        <div class="w-1/2 p-1 md:p-3 md:w-1/4 lg:w-1/5 xl:w-1/6">
+          <div class="h-full p-3 rounded bg-slate-100">
+            <div class="w-full h-[200px] bg-gray-200 animate-pulse rounded-sm"></div>
+            <div class="w-3/4 h-4 mt-2 bg-gray-200 rounded-sm animate-pulse"></div>
+            <div class="w-1/2 h-4 my-3 bg-gray-200 rounded-sm animate-pulse"></div>
+            <div class="flex items-start justify-between">
+              <div class="flex items-center gap-2">
+                <div class="w-4 h-4 bg-gray-200 rounded-sm animate-pulse"></div>
+                <div class="w-8 h-4 bg-gray-200 rounded-sm animate-pulse"></div>
+                <div class="w-8 h-4 bg-gray-200 rounded-sm animate-pulse"></div>
+              </div>
+              <div class="w-12 h-4 bg-gray-200 rounded-sm animate-pulse"></div>
+            </div>
+            <div class="mt-2 text-center">
+              <button disabled class="p-2 text-white bg-green-600 rounded w-[90%]  m-2">Add to cart</button>
+            </div>
+          </div>
+        </div>
+      }
     }
   </div>
 </section>
