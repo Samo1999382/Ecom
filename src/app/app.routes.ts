@@ -13,6 +13,7 @@ import { checkTokenGuard } from './core/guard/checkToken/check-token.guard';
 import { ProductDetailsComponent } from './features/pages/product-details/product-details.component';
 import { AllOrdersComponent } from './features/pages/all-orders/all-orders.component';
 import { WishListComponent } from './features/pages/wish-list/wish-list.component';
+import { CheckOutComponent } from './features/pages/check-out/check-out.component';
 
 export const routes: Routes = [
   {path: '', component: AuthLayoutComponent, canActivate: [checkTokenGuard], children: [
@@ -25,7 +26,7 @@ export const routes: Routes = [
     {path: 'home', component: HomeComponent, title: 'Home'},
     {path: 'cart', canActivate: [authGuard], component: CartComponent, title: 'Cart'},
     {path: 'wishlist', canActivate: [authGuard], component: WishListComponent, title: 'Wish List'},
-    {path: 'allorders', canActivate: [authGuard], component: AllOrdersComponent, title: 'All Orders'},
+    {path: 'checkout/:id', canActivate: [authGuard], component: CheckOutComponent, title: 'Payment'},
     {path: 'products', component: ProductsComponent, title: 'Products'},
     {path: 'brands', component: BrandsComponent, title: 'Brands'},
     {path: 'categories', component: CategoriesComponent, title: 'Categories'},

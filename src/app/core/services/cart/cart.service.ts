@@ -13,6 +13,7 @@ export class CartService {
   token: any;
   totalPrice: number = 0;
   products: Cart[] = [];
+  cartId!: string;
 
   constructor(private http: HttpClient, @Inject(PLATFORM_ID) Id:object, private auth:AuthService) {
     if(isPlatformBrowser(Id)){
@@ -57,10 +58,13 @@ export class CartService {
       });
   }
 
-  checkOut(data: any):Observable<any> {
-    return this.http.post(`${baseURL.BaseURL}/orders/checkout-session/${this.auth.userId}?url=http://192.168.1.3:4200`,
+  checkOut(cartId: string, data: any):Observable<any> {
+    return this.http.post(`${baseURL.BaseURL}/orders/checkout-session/${cartId}?url=http://192.168.1.3:4200`,
       {
         shippingAddress: data
+      },
+      {
+        headers: this.token
       }
     )
   }

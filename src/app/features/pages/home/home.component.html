@@ -1,18 +1,4 @@
-<owl-carousel-o [options]="customOptions">
-  @for (category of categories; track $index) {
-      <ng-template carouselSlide [id]="category._id">
-        <div class="relative overflow-hidden card">
-          <div class="card-img">
-            <img [src]="category.image" class="w-full h-[250px] object-cover" [alt]="category.name" />
-          </div>
-          <div class="px-2 py-4 card-body">
-              <h4 class="text-3xl font-semibold text-slate-800">{{category.name}}</h4>
-          </div>
-        </div>
-      </ng-template>
-  }
-</owl-carousel-o>
-
+<app-category-slider></app-category-slider>
 <section>
   <div class="products">
     <p class="my-3 text-3xl font-light md:mx-24">Popular Products</p>

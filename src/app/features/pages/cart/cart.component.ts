@@ -2,10 +2,11 @@ import { Component } from '@angular/core';
 import { CartService } from '../../../core/services/cart/cart.service';
 import { Cart } from '../../../shared/interface/cart';
 import { CurrencyPipe } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
-  imports: [CurrencyPipe],
+  imports: [CurrencyPipe, RouterLink],
   templateUrl: './cart.component.html',
   styleUrl: './cart.component.scss'
 })
@@ -14,10 +15,12 @@ export class CartComponent {
   products: Cart[] = [];
   temp: Cart[] = [];
   isLoading:boolean = true;
+  cartId!: string
 
   constructor(private cart: CartService) {
     this.products = this.cart.products;
     this.totalPrice = this.cart.totalPrice;
+    this.cartId = this.cart.cartId;
     if(this.products.length !== 0){
       this.isLoading = false;
     }
@@ -42,6 +45,8 @@ export class CartComponent {
         this.products = res.data.products;
         this.cart.products = res.data.products;
         this.cart.totalPrice = res.data.totalCartPrice;
+        this.cartId = res.cartId
+        this.cart.cartId = this.cartId;
       }
     });
   }
